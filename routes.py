@@ -1,10 +1,8 @@
-from __main__ import app
-
-from requests.api import get
+from app import app
 from database import db
 from flask import render_template, redirect, url_for, session
 from flask_login import current_user, login_user, logout_user
-from flask_dance.consumer import oauth_authorized, storage
+from flask_dance.consumer import oauth_authorized
 from flask_dance.contrib.google import make_google_blueprint, google
 from flask_dance.consumer.storage.sqla import SQLAlchemyStorage
 import os

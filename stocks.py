@@ -3,7 +3,6 @@ import pandas as pd
 pd.options.plotting.backend = 'plotly'
 import plotly
 import os
-from config import * 
 
 def output_historical(ticker):
     ts = TimeSeries(os.environ["ALPHA_VANTAGE_KEY"], output_format = 'pandas')
