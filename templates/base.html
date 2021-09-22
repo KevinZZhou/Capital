@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset = 'utf-8'>
+        <title>
+            Capital - {% block title %} {% endblock %}
+        </title>
+        <link rel = 'stylesheet' href = '{{ url_for(
+            'static', filename = 'bootstrap/css/bootstrap.min.css') }}'>
+        <link rel = 'stylesheet' href = '{{ url_for(
+            'static', filename = 'css/styles.css') }}'>
+        {% block load %} {% endblock %}
+    </head>
+    <body>
+        <header id = 'header'>
+            <div id = 'logo'>
+                <a href = '{{ url_for("index") }}'>
+                    <img id = 'logo-image' 
+                        src = '{{ url_for('static', filename = 'money.svg') }}'/>
+                    <h5 id = 'logo-text'> Capital </h5>
+                </a>
+            </div>
+        </header>
+        <main>
+            <div id = 'content'>
+                <div class = 'page-content'>
+                    {% block content %} {% endblock %}
+                </div>
+            </div>
+        </main>
+        <footer id = 'footer'>
+            <p id = 'footer-text'>
+                <a href = 'https://github.com/KevinZZhou'></a> Created by Kevin.
+            </p>
+        </footer>
+    </body>
+    <script src = '{{ url_for(
+        'static', filename = 'bootstrap/js/bootstrap.js') }}'>
+    </script>
+</html>

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %} 
+    Historical Stock Prices
+{% endblock %}
+
+{% block content %}
+    {% if created %}
+        <div class = 'alert alert-warning' role = 'alert'>
+            The ticker you submitted was invalid.  Please input another ticker 
+            to see its historical prices.
+        </div>
+    {% endif %}
+    <h5> Input a stock ticker: </h5>
+    <form action = '{{ url_for("historical") }}' method = 'POST'>
+        {{ form.ticker.label }}: {{ form.ticker(class_ = 'form-text') }} 
+        <br>
+        {{ form.submit(class_ = 'form-text') }}
+        {{ form.csrf_token }}
+    </form> 
+{% endblock %}

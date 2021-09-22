@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %} 
+    {{ ticker }}
+{% endblock %}
+
+{% block load %} 
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script> 
+    $(function(){
+        $("#graphViz").load('templates' + '{{ filepath }}'); 
+    });
+</script> 
+{% endblock %}
+
+
+{% block content %}
+    {{ filepath }}
+    <h5> Historical Stock Prices - {{ ticker }} </h5>
+    <div id = 'graphViz'></div>
+    <object data = 'templates' + '{{ filepath }}'></object>
+{% endblock %}

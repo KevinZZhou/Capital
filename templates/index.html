@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %} 
+    {% if not current_user.is_authenticated %}
+        About
+    {% else %}
+        Welcome!
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <p>Hello</p>
+    {% if not current_user.is_authenticated %}
+        <p>
+            Capital is a web app that aims to provide users with up-to-date 
+            financial news and historical stock prices.
+        </p><br>
+        <p><a href="/google"> Login with Google! </a></p>
+    {% else %}
+        <p>Hi, {{ current_user.name }} ({{ google_data['email'] }})! </p>
+        {% if google_data is not none %}
+            <img src = '{{ google_data['picture'] }}' class = 'profile-picture'>
+            <br><br>
+        {% endif %}
+        
+        <p><a href = '{{ url_for("historical") }}'> Check out historical stock prices! </a></p>
+        <p><a href = '{{ url_for("yahoo") }}'> Read recent Yahoo news articles! </a></p>
+        <br>
+        <p><a href = "/logout"> Log Out </a></p>
+    {% endif %}
+{% endblock %}
