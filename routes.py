@@ -74,11 +74,10 @@ def yahoo():
 def historical():
     form = HistoricalTickerForm()
     if form.validate_on_submit():
-        session['Ticker'] = form.ticker.data
-        created = output_historical(session['Ticker'])
+        created = output_historical(form.ticker.data)
         if not created:
             return render_template('historical.html', 
-                ticker = session['Ticker'], created = not created, form = form)
+                ticker = form.ticker.data, created = not created, form = form)
         else: 
             return redirect('/historical/stock=' + form.ticker.data)
     return render_template('historical.html', form = form)
